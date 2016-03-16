@@ -7,11 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+PigLatinCategory.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        
+        NSLog(@"what do you want to say in Pig Latin? Enter your phrase below\n");
+        char str [200];
+        fgets (str, 200, stdin);
+        
+        NSString *inputString = [[NSString alloc]initWithUTF8String:str];
+        inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSString *outputString = [inputString stringByPigLatinization];
+        
+        NSLog(@"in english i said : %@", inputString);
+        
+        NSLog(@"...and in Pig Latin it is pronounced : %@", outputString);
+        
+        
+        
     }
     return 0;
 }
